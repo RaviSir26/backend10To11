@@ -5,16 +5,16 @@ import studentRouter from './routers/student.routes.js';
 import userRouter from './routers/users.routes.js';
 import userAuth from './middleware/userJwtAuth.js';
 import { MulterError } from 'multer';
-import rateLimit from 'express-rate-limit';
+// import rateLimit from 'express-rate-limit';
 import cors from 'cors';
 
 ConnectDB();
 
-const limiter = rateLimit({
-    windowMs: 1000 * 60,
-    max: 6,
-    message: "Too many request from this IP, please try again later."
-});
+// const limiter = rateLimit({
+//     windowMs: 1000 * 60,
+//     max: 6,
+//     message: "Too many request from this IP, please try again later."
+// });
 
 const app = express();
 app.use(cors({
@@ -28,7 +28,7 @@ app.use(express.urlencoded({extended : true}));
 app.use(express.json());
 app.use('/uploads', express.static(path.join(import.meta.dirname, 'uploads')));
 
-app.use(limiter);
+// app.use(limiter);
 app.use('/users', userRouter);
 // app.use(userAuth);
 app.use('/students', userAuth, studentRouter);

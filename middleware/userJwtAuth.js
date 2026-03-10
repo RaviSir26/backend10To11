@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 const userAuth = async(req, res, next)=>{
 
     try {
-        let bearerHeader = req.headers['authorization'];
+        let bearerHeader = req.headers['Authorization'];
         
         if(typeof bearerHeader != 'undefined'){
             let token = bearerHeader.split(' ')[1];
